@@ -1,0 +1,23 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Jost", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  background: #E7ECF0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+#root{
+  width: 100%;
+}

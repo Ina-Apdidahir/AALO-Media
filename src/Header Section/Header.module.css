@@ -1,0 +1,407 @@
+.container {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.1rem;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+
+.head_cont {
+    position: fixed;
+    top: 0;
+    height: 60px;
+    min-width: 100%;
+    /* background: #FFFFFF; */
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(1rem);
+    border-bottom: 0.5px solid hsla(230, 12%, 40%, 0.231);
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+header a {
+    text-decoration: none;
+}
+
+.logo_side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo_side img {
+    width: 95px;
+}
+
+.logo_side p {
+    font-family: "Jost", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+
+.nav_menue {
+    display: none;
+}
+
+.nav_menue ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+}
+
+.nav_menue ul li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.nav_menue ul li a {
+    text-decoration: none;
+    color: #101112;
+    font-family: "Jost", sans-serif;
+    font-size: 14px;
+}
+
+
+
+.nav_menue ul li:hover a {
+    color: #8D8D8D;
+}
+
+
+.icons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 5px;
+    gap: 15px;
+}
+
+.user_actions .orederbutton {
+    display: inline-block;
+    background-color: #A382C6;
+    color: #FFFFFF;
+    padding: 8px 12px;
+    font-family: "Jost", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    border-radius: .2rem;
+    border: none;
+    cursor: pointer;
+    transition: box-shadow .4s;
+}
+
+.orederbutton:hover {
+    box-shadow: 0 3px 14px hsla(304, 75%, 40%, 0.4);
+}
+.orederbutton a{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.icons .user_actions {
+    gap: 0.5rem;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+.icons .userAction {
+    position: relative;
+    display: none;
+}
+
+
+
+#menue {
+    width: 25px;
+    cursor: pointer;
+}
+
+.userBtn {
+    display: none;
+}
+
+/* ////////////////////    //////  Nav-side  ///////   /////////////////////////// */
+/* ////////////////////    //////  Nav-side  ///////   /////////////////////////// */
+.Nav_side {
+    width: 100%;
+    padding: 15px 10x;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(0.25rem);
+    box-shadow: 0 8px 16px hsla(230, 75%, 32%, .15);
+    position: fixed;
+    top: -100%;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-block: 4.5rem 4rem;
+    transition: top .4s;
+}
+
+.show_nav {
+    top: 0;
+    /* Position at top when visible */
+    transition: top 0.3s ease-in-out;
+    /* Add a smooth transition */
+}
+
+.Nav_classes {
+    width: 25%;
+}
+
+
+.Nav_side_menue ul {
+    list-style: none;
+    padding: 0;
+}
+
+.Nav_side_menue ul li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+
+.Nav_side_menue ul li a {
+    text-decoration: none;
+    color: #101112;
+    font-family: "Jost", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#Nav_side .close {
+    padding: 8px 10px;
+    gap: 0.75rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.Nav-side-icons .userAction {
+    position: relative;
+    display: flex;
+    gap: .5rem;
+}
+
+
+#Nav_side .close {
+    position: absolute;
+    top: 1.15rem;
+    right: 1rem;
+}
+
+#Nav_side #close {
+    width: 15px;
+    cursor: pointer;
+}
+
+/* ////////////////////    //////  Nav-side  ///////   /////////////////////////// */
+
+.nav__close {
+    font-size: 1.25rem;
+    color: hsl(230, 75%, 15%);
+    cursor: pointer;
+    transition: color .4s;
+}
+
+.small_header_logoside {
+    position: absolute;
+    right: 400px;
+}
+
+.hide_head_cont {
+    display: none;
+}
+
+.new_header {
+    position: fixed;
+    top: 0.2rem;
+    height: 60px;
+    min-width: 98%;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-bottom: 0.5px solid hsla(230, 12%, 40%, 0.231);
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
+
+@media screen and (min-width: 768px) {
+    .container {
+        margin-bottom: 50px;
+    }
+
+    .container .new_header{
+        height: 80px;
+    }
+    .container .head_cont {
+        height: 80px;
+        min-width: 98%;
+        border-radius: 5px;
+        top: 5px;
+    }
+
+    .container .new_header .logo_side img {
+        width: 130px;
+    }
+
+    .container .new_header .logo_side p {
+        font-size: 16px;
+    }
+    .Nav_side_menue ul li {
+        padding: 0.7rem;
+        cursor: pointer;
+    }
+    .Nav_side_menue ul li a {
+        text-decoration: none;
+        color: #101112;
+        font-family: "Jost", sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    
+    .container .new_header #menue {
+        width: 35px;
+        cursor: pointer;
+    }
+    #Nav_side #close {
+        width: 25px;
+        cursor: pointer;
+    }
+    
+    .container .user_actions .orederbutton {
+        padding: 10px 12px;
+        font-size: 16px;
+        transition: box-shadow .4s;
+    }
+
+    .orederbutton:hover {
+        box-shadow: 0 4px 24px hsla(359, 75%, 40%, 0.4);
+    }
+
+}
+
+@media screen and (min-width: 1024px) {
+ 
+    .container .head_cont {
+        height: 80px;
+        min-width: 98%;
+        border-radius: 5px;
+        top: 5px;
+    }
+
+    .container .new_header {
+        display: none;
+    }
+
+    .container header {
+        padding: 10px 2rem;
+    }
+
+    .container .logo_side img {
+        width: 130px;
+    }
+
+    .container .nav_menue ul li {
+        padding: 10px 14px;
+    }
+
+    .container .nav_menue ul li a {
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .container .logo_side p {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .orederbutton {
+        color: #FFFFFF;
+        padding: 10px 24px;
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    .orederbutton:hover {
+        box-shadow: 0 4px 24px hsla(359, 75%, 40%, 0.4);
+    }
+
+    .container #menue {
+        width: 20px;
+    }
+
+    .nav {
+        height: calc(var(--header-height) + 2rem);
+        column-gap: 3rem;
+    }
+
+    .nav__close,
+    .nav__toggle {
+        display: none;
+    }
+
+    .nav__menu {
+        margin-left: auto;
+    }
+
+    .nav__list {
+        flex-direction: row;
+        column-gap: 3rem;
+    }
+
+    .menueBtn {
+        display: none;
+    }
+
+    .head_cont .nav_menue {
+        display: initial;
+    }
+
+    header .icons .user_actions {
+        gap: 1.25rem;
+    }
+
+    .icons .user_actions .userAction {
+        display: inline;
+    }
+
+    .icons .userBtn {
+        display: initial;
+    }
+
+    .container .main .left {
+        width: 45%;
+        margin-left: 15px;
+    }
+
+    .container .orederbutton {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+}
