@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 
 import styles from './Bottom_Foter.module.css'
-import Logo from '../assets/blogImages/AALO.png'
-import Facebook from '../assets/blogImages/facebook.png'
-import instagram from '../assets/blogImages/instagram.png'
-import WhatsApp from '../assets/blogImages/whatsapp.png'
+import Logo from '../assets/My_Blog_Images/AALO.png'
+import Facebook from '../assets/My_Blog_Images/facebook.png'
+import instagram from '../assets/My_Blog_Images/instagram.png'
+import WhatsApp from '../assets/My_Blog_Images/whatsapp.png'
 
 function Bottom_Foter() {
 
@@ -17,10 +17,6 @@ function Bottom_Foter() {
                         <div className={styles.box}>
                             <div className={styles.logo_wrapper}>
                                 <a className={styles.logo} href=""> <img src={Logo} alt="" /> Media </a>
-                            </div>
-                            <div className={styles.text}>
-                                {/* <p>Photography inila miss uman saten eliten finus vivera alacus miss the drudean seneice
-                                    miss notumane tonec a fermen.</p> */}
                             </div>
                         </div>
                         <div className={styles.box_midle}>

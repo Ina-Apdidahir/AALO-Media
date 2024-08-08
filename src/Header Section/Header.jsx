@@ -2,11 +2,9 @@
 import { Link, useLocation } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 
-import Menue from '../assets/blogImages/menubtn.png'
-import close from '../assets/blogImages/close.png'
-// import Menue from '../assets/Icons/menubtn.png'
-// import close from '../assets/Icons/close.png'
-import Logo from '../assets/blogImages/AALO.png'
+import Menue from '../assets/My_Blog_Images/menubtn.png'
+import close from '../assets/My_Blog_Images/close.png'
+import Logo from '../assets/My_Blog_Images/AALO.png'
 
 import style from './Header.module.css'
 
