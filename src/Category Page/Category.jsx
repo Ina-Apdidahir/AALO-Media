@@ -6,7 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 import HeadSection from '../Header Section/Header'
 import styles from './Category.module.css'
 
-import next from '../assets/My_Blog_Images/Wnext.png/Wnext.png'
+import next from '../assets/My_Blog_Images/Wnext.png'
 import Previous from '../assets/My_Blog_Images/WPrevious.png'
 
 function Category() {
