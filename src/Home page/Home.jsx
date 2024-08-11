@@ -39,36 +39,8 @@ function Home() {
                 setIsLoading(false);
             });
     }, [])
-    // const query = `*[_type == "Poster"] | order(_createdAt desc) {
-    //     title,
-    //     image,
-    //     description_1,
-    //     video {
-    //         asset -> {
-    //         _id,
-    //         url
-    //         }
-    //     },
-    //     description_2,
-    //     publishedAt
-    // }`;
-
-
-    // useEffect(() => {
-
-    //     client.fetch(query)
-    //         .then((data) => {
-    //             console.log('content data:', data); // Inspect the fetched data
-    //             setContents(data);
-    //             setVideos(data);
-    //         })
-    //         .catch(console.error);
-
-    // }, []);
-
 
     const lastPost = posts[0];
-    // const otherPosts = posts.slice(1);
     const otherPosts = posts.slice(1, 5);
 
     if (isLoading) {

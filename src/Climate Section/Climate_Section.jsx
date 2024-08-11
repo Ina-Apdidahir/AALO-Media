@@ -53,14 +53,8 @@ function ClimateSection() {
     // console.log(filteredPosts)
 
     const lastPost = filteredPosts[0];
-    const otherPosts = filteredPosts.slice(1);
+    const otherPosts = filteredPosts.slice(1, 5);
 
-    // console.log(lastPost)
-    // console.log(categoryposts);
-
-    // if (isLoading) {
-    //     return <div className={styles.loading}>Loading...</div>;
-    // }
 
     if (error) {
         return <div>Error fetching posts: {error.message}</div>;

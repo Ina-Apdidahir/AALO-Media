@@ -3,12 +3,12 @@ import React, { useState, useEffect } from 'react';
 import client from '../../sanity_client/sanityClient' // Import your client
 import { Link } from 'react-router-dom';
 
-import styles from './Sports_Section.module.css'
+import styles from './politics.module.css'
 import whiteArrow from '../assets/My_Blog_Images/whiteArrow.png'
 
-function SportsSection() {
 
-    const [categoryposts, setCategoryposts] = useState([]);
+function Politics(){
+    const [politicposts, setPoliticposts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -39,7 +39,7 @@ function SportsSection() {
 
         client.fetch(query)
             .then((data) => {
-                setCategoryposts(data);
+                setPoliticposts(data);
                 setIsLoading(false);
             })
             .catch((err) => {
@@ -48,27 +48,19 @@ function SportsSection() {
             });
     }, [])
 
-    // const categoryTitles = categoryposts.flatMap(item => item.categories.map(category => category.title));
-    // console.log(categoryTitles);
 
-    const filteredPosts = categoryposts.filter(post => post.categories?.some(category => category.title === 'Sports'));
-    // console.log(filteredPosts)
+    const filteredPosts = politicposts.filter(post => post.categories?.some(category => category.title === 'Politics'));
+
 
     const lastPost = filteredPosts[0];
     const otherPosts = filteredPosts.slice(1, 5);
 
-    // console.log(lastPost)
-    // console.log(categoryposts);
-
-    // if (isLoading) {
-    //     return <div className={styles.loading}>Loading...</div>;
-    // }
 
     if (error) {
         return <div>Error fetching posts: {error.message}</div>;
     }
 
-    if (!categoryposts.length) {
+    if (!politicposts.length) {
         return <div>No posts found</div>;
     }
 
@@ -81,7 +73,7 @@ function SportsSection() {
 
             <div className={styles.sub_container}>
                 <div className={styles.section}>
-                    <h1>Sports</h1>
+                    <h1>Politics</h1>
                     <button>
                         <Link to={`/category/${lastPost.categories?.map(category => category.slug.current)}`}>
                             see more <img src={whiteArrow} alt="" />
@@ -126,9 +118,6 @@ function SportsSection() {
 
         </div >
     );
-
 }
 
-export default SportsSection
-
-
+export default Politics

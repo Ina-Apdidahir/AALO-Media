@@ -5,8 +5,9 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import client from '../../sanity_client/sanityClient'
 import { urlFor } from "../../sanity_client/sanityClient";
-import BlockContent from '@sanity/block-content-to-react'
+// import BlockContent from '@sanity/block-content-to-react'
 // import PortableText from '@sanity/block-content-to-react';
+import { PortableText } from '@portabletext/react';
 
 import styles from './Detalis.module.css'
 
@@ -136,22 +137,24 @@ function Details({ blocks }) {
 
   const serializers = {
     types: {
-      space: ({ node }) => {
-        return <div style={{ height: node.height }} className={styles.space} />;
-      },
-       image: ({ node }) => {
-      const imageUrl = urlFor(node.asset).url(); // Generate the URL
-      return (
-        <img
-          src={imageUrl}
-          alt={node.alt || 'Image'}
-          className={styles.Image}
-        />
-      );
+        space: ({ node }) => {
+            if (!node || !node.height) {
+                return <div className={styles.space} />;
+            }
+            return <div style={{ height: node.height }} className={styles.space} />
+        },
+        image: ({ node }) => {
+          const imageUrl = urlFor(node.asset).url(); // Generate the URL
+          return (
+            <img
+              src={imageUrl}
+              alt={node.alt || 'Image'}
+              className={styles.Image}
+            />
+          );
+        },
     },
-    },
-  };
-
+};
 
 
   return (
@@ -187,12 +190,15 @@ function Details({ blocks }) {
             </div>
 
             <div className={styles.Blog_body}>
-              <BlockContent
+              {/* <BlockContent
                 blocks={singlePost.body}
                 projectId="t7typqig"
                 dataset="production"
                 serializers={serializers}
-              />
+              /> */}
+
+              <PortableText value={singlePost.body} components={serializers} />
+
             </div>
 
             {singlePost.author && (
