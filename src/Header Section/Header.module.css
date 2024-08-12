@@ -111,11 +111,13 @@ header a {
 .orederbutton:hover {
     box-shadow: 0 3px 14px hsla(304, 75%, 40%, 0.4);
 }
-.orederbutton a{
+
+.orederbutton a {
     color: #FFFFFF;
     text-decoration: none;
 }
- .user_actions {
+
+.user_actions {
     gap: 0.4rem;
     display: flex;
     align-items: center;
@@ -204,14 +206,14 @@ header a {
 }
 
 
-#Nav_side .close {
+.Nav_side .close {
     position: absolute;
-    top: 1.15rem;
-    right: 1rem;
+    top: 1.25rem;
+    right: 1.35rem;
 }
 
-#Nav_side #close {
-    width: 15px;
+.Nav_side #close {
+    width: 20px;
     cursor: pointer;
 }
 
@@ -252,20 +254,22 @@ header a {
 /* _______________________  Search side ______________________ */
 
 .search_side {
-  position: fixed;
-  top: -1000px;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(24px);
-  padding: 2.5rem 1.5rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  /* pointer-events: none; */
-  transition: opacity .4s;
+    position: fixed;
+    top: -1000px;
+    right: 0;
+    width: 100%;
+    height: 90vh;
+    background-color: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 8px 32px hsla(311, 74%, 15%, 0.2);
+    backdrop-filter: blur(24px);
+    padding: 2.5rem 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    /* pointer-events: none; */
+    transition: opacity .4s;
 }
+
 .search_show {
     top: 0;
     transition: top 0.3s ease-in-out;
@@ -281,50 +285,89 @@ header a {
     border-radius: .5rem;
     transform: translateY(-1rem);
     transition: transform .4s;
-  }
+}
 
-  .search__input {
+.search__input {
     border: none;
     width: 100%;
     padding-block: 1rem;
     background-color: hsl(230, 100%, 97%);
     color: hsl(230, 12%, 40%);
-  }
-  .search__input:focus{
+}
+
+.search__input:focus {
     border: none;
     outline: none;
-  }
-  
-  .search__input::placeholder {
-    color: hsl(230, 12%, 40%);
-  }
+}
 
-  .search_icon{
+.search__input::placeholder {
+    color: hsl(230, 12%, 40%);
+}
+
+.search_icon {
     width: 15px;
-  }
-  .search_side .close {
+}
+
+.search_side .close {
     width: 100%;
     padding: 8px 10px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-  .search__close{
+
+.search__close {
     margin-bottom: 2rem;
     width: 20px;
     cursor: pointer;
-  }
-    /* Show search */
-    .show-search {
-      opacity: 1;
-      pointer-events: initial;
-    }
-    
-    .show-search .search__form {
-      transform: translateY(0);
-    }
+}
+
+/* Show search */
+.show-search {
+    opacity: 1;
+    pointer-events: initial;
+}
+
+.show-search .search__form {
+    transform: translateY(0);
+}
+
+.filteredPosts {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0 0.1rem 2rem 0.1rem ;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.post {
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+}
+.post img{
+    width: 45%;
+}
 
 
+@media screen and (min-width: 525px){
+
+    .post img{
+        width: 35%;
+    }
+}
+@media screen and (min-width: 625px){
+
+    .post img{
+        width: 25%;
+    }
+    .post p{
+        width: 55%;
+        font-size: 18px;
+    }
+}
 
 
 @media screen and (min-width: 768px) {
@@ -332,9 +375,10 @@ header a {
         margin-bottom: 50px;
     }
 
-    .container .new_header{
+    .container .new_header {
         height: 80px;
     }
+
     .container .head_cont {
         height: 80px;
         min-width: 98%;
@@ -349,10 +393,12 @@ header a {
     .container .new_header .logo_side p {
         font-size: 16px;
     }
+
     .Nav_side_menue ul li {
         padding: 0.7rem;
         cursor: pointer;
     }
+
     .Nav_side_menue ul li a {
         text-decoration: none;
         color: #101112;
@@ -360,30 +406,34 @@ header a {
         font-size: 20px;
         font-weight: 600;
     }
-    
+
     .container .new_header #menue {
         width: 35px;
         cursor: pointer;
     }
+
     #Nav_side #close {
         width: 25px;
         cursor: pointer;
     }
-    
-    .container .user_actions .orederbutton {
-        padding: 10px 12px;
-        font-size: 16px;
-        transition: box-shadow .4s;
-    }
 
-    .orederbutton:hover {
-        box-shadow: 0 4px 24px hsla(359, 75%, 40%, 0.4);
+    .post {
+        width: 48%;
+        display: flex;
+        gap: 0.5rem;
+    }
+    .post img{
+        width: 32%;
+    }
+    .post p{
+        width: 65%;
+        font-size: 16px;
     }
 
 }
 
 @media screen and (min-width: 1024px) {
- 
+
     .container .head_cont {
         height: 80px;
         min-width: 98%;
@@ -479,6 +529,19 @@ header a {
     .container .orederbutton {
         font-size: 16px;
         padding: 10px 20px;
+    }
+
+    .post {
+        width: 48%;
+        display: flex;
+        gap: 1rem;
+    }
+    .post img{
+        width: 30%;
+    }
+    .post p{
+        width: 63%;
+        font-size: 18px;
     }
 
 }

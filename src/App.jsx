@@ -11,6 +11,7 @@ import Sports from './Sports Section/Sports.jsx'
 import Climate from './Climate Section/Climate.jsx';
 import Calture from './Culture section/Calture.jsx';
 
+import postsData from './Header Section/FiltetredPosts.jsx'
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
 
       <BrowserRouter basename="/AALO-Media">
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={<LandingPage posts={postsData} />} />
           <Route path="/detail/:slug" element={<Details />} />
           <Route path='/news' element={<LatestNews />} />
           <Route path="/category/:slug" element={<Category />} />

@@ -12,7 +12,7 @@ import { PortableText } from '@portabletext/react';
 import styles from './Detalis.module.css'
 
 
-function Details({ blocks }) {
+function Details() {
 
   const [singlePost, setSinglePost] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -135,26 +135,29 @@ function Details({ blocks }) {
   const formattedDate = formatDate(singlePost?.publishedAt);
 
 
-  const serializers = {
-    types: {
-        space: ({ node }) => {
-            if (!node || !node.height) {
-                return <div className={styles.space} />;
-            }
-            return <div style={{ height: node.height }} className={styles.space} />
-        },
-        image: ({ node }) => {
-          const imageUrl = urlFor(node.asset).url(); // Generate the URL
+const components = {
+  types: {
+      space: ({ value }) => {
+          // Render the space component
           return (
-            <img
-              src={imageUrl}
-              alt={node.alt || 'Image'}
-              className={styles.Image}
-            />
+              <div style={{ height: value.height }} className={styles.space} />
           );
-        },
-    },
+      },
+      image: ({ value }) => {
+          const imageUrl = urlFor(value.asset).url(); // Generate the URL
+          return (
+              <img
+                  src={imageUrl}
+                  alt={value.alt || 'Image'}
+                  className={styles.Image}
+              />
+          );
+      },
+      // Add other types as needed
+  },
 };
+
+
 
 
   return (
@@ -196,8 +199,8 @@ function Details({ blocks }) {
                 dataset="production"
                 serializers={serializers}
               /> */}
-
-              <PortableText value={singlePost.body} components={serializers} />
+             
+              <PortableText value={singlePost.body} components={components}/>
 
             </div>
 
