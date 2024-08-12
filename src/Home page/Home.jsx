@@ -8,6 +8,42 @@ import styles from './Home.module.css'
 
 function Home() {
 
+
+    // ___________________ Scroll Animation _____________________\\
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add(styles.visible);
+                    } else {
+                        entry.target.classList.remove(styles.visible);
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        const observeElements = () => {
+            const elements = document.querySelectorAll(`.${styles.Scale}`);
+            // console.log("Elements found:", elements.length);
+            elements.forEach((el) => observer.observe(el));
+        };
+
+        observeElements(); // Initial run
+        const observerMutation = new MutationObserver(observeElements);
+        observerMutation.observe(document.body, { childList: true, subtree: true });
+
+        return () => {
+            observer.disconnect();
+            observerMutation.disconnect();
+        };
+    }, []);
+
+    // ___________________ Scroll Animation _____________________\\
+
+
     const [posts, setPosts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -43,10 +79,10 @@ function Home() {
     const lastPost = posts[0];
     const otherPosts = posts.slice(1, 5);
 
+
     if (isLoading) {
         return <div className={styles.loading}>Loading...</div>;
     }
-
     if (error) {
         return <div>Error fetching posts: {error.message}</div>;
     }
@@ -57,45 +93,54 @@ function Home() {
 
 
 
-
     return (
-        <div className={styles.container}>
+        <>
+            {posts && posts.length > 0 ? (
+                <div className={styles.container}>
 
-            <div className={styles.sub_container}>
-                <div className={styles.stories}>
+                    <div className={styles.sub_container}>
+                        
+                        <div className={styles.stories}>
 
+                            {lastPost ? (
+                                <div className={styles.story_1} >
+                                    <div className={styles.story_1_image}>
+                                        {lastPost.mainImage && lastPost.mainImage.asset && (
+                                            <img className={styles.Scale} src={lastPost.mainImage.asset.url} alt="" />
+                                        )}
+                                    </div>
+                                    <div className={styles.sub_title}>
+                                        <h4 className={styles.sub_title_txt}>
+                                            <Link to={`/detail/${lastPost.slug.current}`}>{lastPost.title}</Link>
+                                        </h4>
+                                    </div>
+                                </div>
+                            ) : ''}
 
-                    <div className={styles.story_1} >
-                        <div className={styles.story_1_image}>
-                            <img src={lastPost.mainImage.asset.url} alt="" />
+                            {otherPosts && otherPosts.length > 0 ? (
+                                <div className={styles.Sidestories}>
+                                    {otherPosts.map((post) => (
+                                        <div className={styles.story} key={post.slug.current} >
+                                            <div className={styles.image}>
+                                                <img className={styles.Scale} src={post.mainImage.asset.url} alt="" />
+                                            </div>
+                                            <div className={styles.sub_title}>
+                                                <h4 className={styles.sub_title_txt} >
+                                                    <Link to={`/detail/${post.slug.current}`}>{post.title}</Link>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : ''}
+
                         </div>
-                        <div className={styles.sub_title}>
-                            <h4 className={styles.sub_title_txt}>
-                                <Link to={`/detail/${lastPost.slug.current}`}>{lastPost.title}</Link>
-                            </h4>
-                        </div>
+
                     </div>
 
-                    <div className={styles.Sidestories}>
-                        {otherPosts.map((post) => (
-                            <div className={styles.story} key={post.slug.current} >
-                                <div className={styles.image}>
-                                    <img src={post.mainImage.asset.url} alt="" />
-                                </div>
-                                <div className={styles.sub_title}>
-                                    <h4 className={styles.sub_title_txt}>
-                                        <Link to={`/detail/${post.slug.current}`}>{post.title}</Link>
-                                    </h4>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div >
+                </div >
+            ) : ''}
+        </>
     );
 
 }

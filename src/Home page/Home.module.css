@@ -9,9 +9,23 @@
     overflow: hidden;
 }
 
+/* ____________________ Animation styles_____________________ */
+
+.Scale{
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 1.2s ease-out;
+}
+.Scale.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ____________________ Animation styles_____________________ */
+
 .sub_container{
     width: 98%;
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 0.5rem;
     border-radius: 0.2rem;
     background-color: #FFFFFF;
   }

@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import Menue from '../assets/My_Blog_Images/menubtn.png'
 import close from '../assets/My_Blog_Images/close.png'
 import Logo from '../assets/My_Blog_Images/AALO.png'
+import search from '../assets/My_Blog_Images/search.png'
 
 import style from './Header.module.css'
 
@@ -20,6 +21,7 @@ function HeadSection() {
     }, []);
 
     const [showNav, setShowNav] = useState(false);
+    const [showsearch, setShowSearch] = useState(false);
 
     const handleMenuClick = () => {
         setShowNav(true);
@@ -28,6 +30,15 @@ function HeadSection() {
     const handleCloseClick = () => {
         setShowNav(false);
     };
+
+    const handleSeaerchClick = () => {
+        setShowSearch(true);
+    };
+
+    const handleSearchClose = () => {
+        console.log("clicked")
+        setShowSearch(false);
+    }
 
     //   ////////////////////////////   SCROLL FUNCTION    // ////////////////// 
 
@@ -43,7 +54,9 @@ function HeadSection() {
         <div className={style.container}>
             <div className={style.new_header}>
                 <div className={style.user_actions}>
-                    <button className={style.orederbutton}>Order Now</button>
+                    <div className={style.searchBtn}>
+                        <img onClick={handleSeaerchClick} id={style.search} src={search} alt="" />
+                    </div>
                 </div>
                 <div className={style.logo_side} >
                     <img src={Logo} alt=""></img>
@@ -64,7 +77,6 @@ function HeadSection() {
                         <div className={style.Nav_side_menue}>
                             <ul>
                                 <li><Link to="/">Home</Link></li>
-                                <li><Link to="/about">About</Link></li>
                                 <li><Link to="/news">Politics</Link></li>
                                 <li><Link to="/sports">Sportrs</Link></li>
                                 <li><Link to="/calture">Culture</Link></li>
@@ -73,6 +85,17 @@ function HeadSection() {
                         </div>
                     </div>
                 </div>
+
+                <div className={`${style.search_side} ${showsearch ? style.search_show : ''}`}>
+                    <div className={style.close}>
+                        <img className={style.search__close} src={close} onClick={handleSearchClose}></img>
+                    </div>
+                    <form action="" className={style.search__form}>
+                        <img className={style.search_icon} src={search} alt="" />
+                        <input type="search" placeholder="What are you looking for?" className={style.search__input} id="search_input" />
+                    </form>
+                </div>
+
             </div>
             <div className={`${style.head_cont} ${isSmallScreen ? style.hide_head_cont : ''}`}>
                 <header>
@@ -83,7 +106,6 @@ function HeadSection() {
                     <div className={style.nav_menue}>
                         <ul>
                             <li><Link to="/">Home</Link></li>
-                            <li><Link to="/about">About</Link></li>
                             <li><Link to="/news">Politics</Link></li>
                             <li><Link to="/sports">Sportrs</Link></li>
                             <li><Link to="/calture">Culture</Link></li>
@@ -91,9 +113,18 @@ function HeadSection() {
                         </ul>
                     </div>
                     <div className={style.icons}>
-                        <div className={style.user_actions}>
-                            <button className={style.orederbutton}>Order Now</button>
+                        <div className={style.searchBtn}>
+                            <img onClick={handleSeaerchClick} id={style.search} src={search} alt="" />
                         </div>
+                    </div>
+                    <div className={`${style.search_side} ${showsearch ? style.search_show : ''}`}>
+                        <div className={style.close}>
+                            <img className={style.search__close} src={close} onClick={handleSearchClose}></img>
+                        </div>
+                        <form action="" className={style.search__form}>
+                            <img className={style.search_icon} src={search} alt="" />
+                            <input type="search" placeholder="What are you looking for?" className={style.search__input} id="search_input" />
+                        </form>
                     </div>
                 </header>
             </div>
