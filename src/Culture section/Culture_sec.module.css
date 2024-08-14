@@ -22,6 +22,11 @@
     transform: scale(1);
 }
 
+.story_1:hover .sub_title_txt a,
+.story:hover .sub_title_txt a{
+    text-decoration: underline;
+}
+
 /* ____________________ Animation styles_____________________ */
 
 .sub_container{
@@ -131,6 +136,7 @@
 
 .Sidestories .story .sub_title {
     width: 60%;
+    font-size: 14px;
 }
 
 
@@ -274,7 +280,7 @@ a {
         flex-direction: column;
     }
     .Sidestories .story h4{
-        font-size: 18px;
+        font-size: 16px;
      }
      .story_1 h4{
         font-size: 22px;

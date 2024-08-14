@@ -102,7 +102,7 @@ function Calture_Section() {
         return <div>Error fetching posts: {error.message}</div>;
     }
 
-    if (!categoryposts.length) {
+    if (!categoryposts.length < 0) {
         return <div>No posts found</div>;
     }
 

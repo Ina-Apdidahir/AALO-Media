@@ -7,7 +7,10 @@
     gap: 20px;
     padding: 2rem 0.1rem;
     overflow: hidden;
-    position: relative;
+}
+
+.loading{
+    text-align: center;
 }
 
 /* ____________________ Animation styles_____________________ */
@@ -21,274 +24,349 @@
     opacity: 1;
     transform: scale(1);
 }
+.lefslide{
+    position: relative;
+    left: -3rem;
+    opacity: 0;
+    transition: all 1.2s ease-out;
+}
+.lefslide.visible{
+    left: 0;
+    opacity: 1;
+}
+.rightslide{
+    position: relative;
+    right: -3rem;
+    opacity: 0;
+    transition: all 1.2s ease-out;
+}
+.rightslide.visible{
+    right: 0;
+    opacity: 1;
+}
 
 /* ____________________ Animation styles_____________________ */
 
-.sub_container{
+.posts_container {
     width: 98%;
-    padding: 1.5rem 1rem;
+    padding: 1rem 1rem 1.5rem 1rem;
     border-radius: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.filters {
+    width: 100%;
+    padding: 1rem;
     background-color: #FFFFFF;
-  }
-  .sub_container::before{
-    content: '';
-    position: absolute;
-    background-color: #A382C6;
-    top: 2rem;
-    left: 0.35rem;
-    height: 0.5rem;
-    width: 2rem;
-}
-.sub_container::after{
-    content: '';
-    position: absolute;
-    background-color: #A382C6;
-    top: 2rem;
-    right: 0.35rem;
-    height: 0.5rem;
-    width: 2rem;
+    border-radius: 0.3rem;
 }
 
-.section{
-    width: 100%;
-    padding: 0  0 1rem 0;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 2;
-}
-.section h1{
-    font-size: 24px;  
-}
-.section h1::before{
-    content: '';
-    position: absolute;
-    background-color: #A382C6;
-    top: 0.2rem;
-    left: -0.5rem;
-    width: 0.75rem;
-    height: 0.75rem;
-    z-index: -1;
-}
-
-.section button{
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    border: 0;
-    background-color: #A382C6;
+.filters button {
+    padding: 8px 14px;
     border-radius: 2px;
-    transition: all ease-in-out .4s;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 14px;
-    color: #FFFFFF;
-}
-.section button img{
-    width: 20px;
-}
-.section button:hover{
-    background-color: #000000;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
 }
 
-.stories {
+.posts {
     width: 100%;
-    padding: 0.2rem;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    justify-content: center;
+    gap: 15px;
 }
-
-.story_1 {
-    position: relative;
+.post:hover .post_image img{
+ transform: scale(1.02);
+ transition: all 0.4s ease-in-out;
+}
+.post {
     width: 100%;
-    height: 100%;
+    /* height: 440px; */
+    box-shadow: 0 0 1px #110b1884;
+    background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
-}
-.story_1 .sub_title{
-    width: 100%;
-    font-size: 18px;
-} 
-
-.Sidestories {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.Sidestories .story {
-    display: flex;
-    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
     gap: 10px;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
-.Sidestories .story .image {
-    width: 37%;
-}
-
-.Sidestories .story .sub_title {
-    width: 60%;
-}
-
-
-.section a {
-    text-decoration: none;
-    color: #FFFFFF ;
-}
-
-.loading {
-    text-align: center;
-    font-size: 18px;
-}
-
-.story_section {
+.post_image {
     width: 100%;
-    height: 100%;
-    position: relative;
+    /* height: 220px; */
 }
 
-.image {
+.post_image img {
     width: 100%;
-    height: 100%;
-}
-
-.image img {
-    max-width: 100%;
     max-height: 100%;
 }
 
-@media screen and (min-width: 525px){
-
- 
-    .section h1{
-        font-size: 30px;  
-    }
-
-    .story_1 .image img{
-        width: 100%;
-    }
-
-    .Sidestories{
-        width: 80%;
-    }
-    .Sidestories .story .image{
-        width: 40%;
-     }
-     .Sidestories .story .image img{
-        width: 100%;
-     }
-     .Sidestories .story .sub_title{
-         width: 100%;
-     }
-     .Sidestories .story h4{
-        font-size: 18px;
-     }
+.post_category {
+    padding: 0.5rem 0.4rem;
 }
-@media screen and (min-width: 620px){
-    
 
-    .sub_container::before{
-        left: 0.45rem;
-    }
-    .sub_container::after{
-        right: 0.45rem;
-    }
+.category {
+    background-color: #A382C6;
+    color: #FFFFFF;
+    font-size: 14px;
+    padding: 4px 10px;
+    border-radius: 2px;
+    display: inline;
 }
-@media screen and (min-width: 768px){
-    
 
-    .sub_container::before{
-        left: 0.55rem;
-    }
-    .sub_container::after{
-        right: 0.55rem;
+.Aouthor_date {
+    display: flex;
+    align-items: center;
+}
+
+.post_Author {
+    margin-top: 0.2rem;
+    border-left: 1px solid #A382C6;
+}
+
+.post_Author,
+.post_date,
+.post_title {
+    padding: 0 0.4rem;
+}
+
+.post_date small,
+.post_Author p {
+    font-size: 12px;
+    color: #0000009f;
+}
+
+.post_title p {
+    font-size: 19px;
+}
+
+.post_btn {
+    padding: 0 0.4rem;
+    width: 100%;
+}
+
+.post_btn button {
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    font-size: 12px;
+    background-color: #A382C6;
+    color: #FFFFFF;
+    border-radius: 2px;
+}
+.post_btn button:hover{
+    border: 0.07rem solid #A382C6;
+    color: #080110;
+    background-color: #FFFFFF;
+    transition: all 0.4s ease-in-out;
+}
+.post_btn button:hover a{
+    color: #080110;
+    transition: color all 0.4s ease-in-out;
+}
+.post a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+
+.paginations {
+    width: 100%;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    padding: 1rem 0.5rem;
+}
+
+.pagination .nextBtn,
+.pagination .prevBtn {
+    border: 0;
+    font-size: 0.75rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    background-color: #f0f0f0;
+}
+
+.pagination .nextBtn.active {
+    background-color: #A382C6;
+}
+
+.pagination .prevBtn.active {
+    background-color: #A382C6;
+}
+
+.pagination img {
+    width: 12px;
+}
+
+
+
+.paginationBtn {
+    cursor: pointer;
+    border: none;
+    font-size: 0.75rem;
+    padding: 0.35rem 1rem;
+    border-radius: 0.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    background-color: #A382C6;
+    color: #FFFFFF;
+}
+
+
+.paginationBtn:disabled {
+    cursor: not-allowed;
+    /* opacity: 0.5; */
+    background-color: rgba(163, 130, 198, 0.5);
+}
+.pagination_pages{
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+}
+.pagination .pages {
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.paginationNumber {
+    cursor: pointer;
+    padding: 0.75rem;
+    line-height: 0.5rem;
+    border-radius: 0.1rem;
+    text-align: center;
+    font-size: 12px;
+    background-color: #E7ECF0;
+    color: rgba(15, 14, 14, 0.47);
+    border: none;
+    transition: background-color .4s;
+}
+
+.activePage {
+    background-color: #A382C6;
+    transition: background-color .6s;
+    color: #FFFFFF;
+}
+
+
+@media screen and (min-width: 575px) {
+
+    .posts_container {
+        padding: 1rem 0.4rem;
     }
 
-    .section button{
-        font-size: 16px;
-    }
-    .section button img{
-        width: 25px;
-    }
-    .section h1{
-        font-size: 34px;  
-    }
-    .stories{
+    .posts {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         gap: 10px;
     }
-    .story_1{
-        width: 58%;
-        display: flex;
-        flex-direction: column;
+
+    .post {
+        max-width: 48%;
     }
-    .Sidestories{
-        display: flex;
-        flex-direction: column;
-        width: 38%;
-    }
-    .Sidestories .story{
+
+    .post_image {
         width: 100%;
-        display: flex;
-        flex-direction: row;
+        height: 220px;
     }
+}
 
+@media screen and (min-width: 768px) {
 
-    .Sidestories .story .image {
-        width: 60%;
-    }
-     .Sidestories .story .image img{
-        max-width: 100%;
-     }
-     .Sidestories .story .sub_title{
-         width: 100%;
-     }
-     .Sidestories .story h4{
+    .filters button {
         font-size: 14px;
-     }
+        padding: 8px 18px;
+    }
+
+    .post_image {
+        width: 100%;
+        height: 280px;
+    }
+
+    .post_Author {
+        padding: 0.1rem 0.6rem;
+    }
+
+    .paginationBtn {
+        font-size: 1rem;
+        padding: 0.4rem 1.1rem;
+        border-radius: 0.1rem;
+        gap: 0.35rem;
+    }
+    .pagination .pages{
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width: 900px) {
+
+    .post_image {
+        width: 100%;
+        height: 300px;
+    }
 }
 
 @media screen and (min-width: 1024px) {
 
-    .sub_container::before{
-        left: 0.85rem;
+    .posts_container {
+        padding: 1rem 0.4rem;
     }
-    .sub_container::after{
-        right: 0.85rem;
-    }
-    
 
-    .section button {
-        padding: 0.5rem 1.2rem;
-        font-size: 18px;
-    }
-   
-    .section h1{
-        font-size: 40px;  
-        font-weight: 700;
-    }
-    .Sidestories {
+    .posts {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
     }
-    .Sidestories .story h4{
-        font-size: 18px;
-     }
-     .story_1 h4{
-        font-size: 22px;
-     }
-     .section h1::before{
-        top: 0.2rem;
-        left: -0.5rem;
-        width: 1.25rem;
-        height: 1.25rem;
+
+
+    .post {
+        max-width: 30%;
+        padding-bottom: 1rem;
     }
-    .story_1 .image img{
+
+    .post_image {
         width: 100%;
-        max-height: 100%;
+        height: 220px;
+    }
+
+    .post_date,
+    .post_Author {
+        padding: 0 0.6rem;
+    }
+
+    .post_title {
+        padding: 0.25rem 0.4rem;
+    }
+
+    .post_title p {
+        font-size: 19px;
+    }
+
+    .paginationBtn {
+        font-size: 1rem;
+        padding: 0.45rem 1.2rem;
+        border-radius: 0.1rem;
+        gap: 0.4rem;
     }
 
 }

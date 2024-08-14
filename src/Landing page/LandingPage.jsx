@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import HeadSection from "../Header Section/Header.jsx";
 import Home from "../Home page/Home.jsx";
-import Politics from "../Politics section/politics.jsx";
+import Politic_Section from '../Politics section/Politic_Section.jsx';
 import SportsSection from "../Sports Section/Sports_Section.jsx";
 import Calture_Section from "../Culture section/Culture_sec.jsx";
 import ClimateSection from "../Climate Section/Climate_Section.jsx";
@@ -14,7 +14,7 @@ function LandingPage() {
         <>
             <HeadSection /> 
             <Home />
-            <Politics />
+            <Politic_Section />
             <SportsSection />
             <Calture_Section />
             <ClimateSection />

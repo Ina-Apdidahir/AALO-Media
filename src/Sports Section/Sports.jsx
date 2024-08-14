@@ -13,6 +13,48 @@ import styles from './Sports.module.css'
 
 function Sports() {
 
+
+    // ___________________ Scroll Animation _____________________\\
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add(styles.visible);
+                    } else {
+                        entry.target.classList.remove(styles.visible);
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        const observeElements = () => {
+            const elements = document.querySelectorAll(`.${styles.Scale}`);
+            // console.log("Elements found:", elements.length);
+            elements.forEach((el) => observer.observe(el));
+
+            const lefslide = document.querySelectorAll(`.${styles.lefslide}`);
+            lefslide.forEach((el) => observer.observe(el));
+
+            const rightslide = document.querySelectorAll(`.${styles.rightslide}`);
+            rightslide.forEach((el) => observer.observe(el));
+        };
+
+        observeElements(); // Initial run
+        const observerMutation = new MutationObserver(observeElements);
+        observerMutation.observe(document.body, { childList: true, subtree: true });
+
+        return () => {
+            observer.disconnect();
+            observerMutation.disconnect();
+        };
+    }, []);
+
+    // ___________________ Scroll Animation _____________________\\
+
+
     const [blogPosts, setBlogPosts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -186,7 +228,7 @@ function Sports() {
                                 <div className={styles.post_txts}>
 
                                     <div className={styles.post_category}>
-                                        <Link to={`/category/${post.subcategories?.map(category => category.slug.current)}`}>
+                                        <Link className={styles.Scale} to={`/category/${post.subcategories?.map(category => category.slug.current)}`}>
                                             {post.subcategories ? (
                                                 <p className={styles.category}>{post.subcategories.map(category => category.title).join(',')}</p>
                                             ) : (
@@ -195,23 +237,28 @@ function Sports() {
                                         </Link>
                                     </div>
 
-                                    <div className={styles.Aouthor_date}>
+                                    <div className={` ${styles.Aouthor_date} ${styles.Scale}`}>
                                         <div className={styles.post_date}>
-                                            <small>{formatDate(post.publishedAt)}</small>
+                                            <small className={styles.lefslide}
+                                            >
+                                                {formatDate(post.publishedAt)}
+                                            </small>
                                         </div>
                                         <div className={styles.post_Author}>
-                                            <p>{post.author}</p>
+                                            <p className={styles.rightslide}>
+                                                {post.author}
+                                            </p>
                                         </div>
                                     </div>
 
                                     <div className={styles.post_title}>
-                                        <p>
+                                        <p >
                                             {post.title}
                                         </p>
                                     </div>
                                 </div>
                                 <div className={styles.post_btn}>
-                                    <button><Link to={`/detail/${post.slug.current}`}>Read more</Link></button>
+                                    <button className={styles.Scale}><Link to={`/detail/${post.slug.current}`}>Read more</Link></button>
                                 </div>
                             </div>
                         ))

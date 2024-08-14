@@ -5,7 +5,8 @@ import './App.css'
 
 import LandingPage from './Landing page/LandingPage';
 import Details from './Details page/Details.jsx';
-import LatestNews from './Latest Posts/LatestNews.jsx';
+// import Politics from './Politics section/politics.jsx';
+import Politics from './Politics section/politics.jsx';
 import Category from './Category Page/Category.jsx';
 import Sports from './Sports Section/Sports.jsx'
 import Climate from './Climate Section/Climate.jsx';
@@ -23,7 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage posts={postsData} />} />
           <Route path="/detail/:slug" element={<Details />} />
-          <Route path='/news' element={<LatestNews />} />
+          <Route path='/politics' element={<Politics />} />
           <Route path="/category/:slug" element={<Category />} />
           <Route path="/sports" element={<Sports />} />
           <Route path="/calture" element={<Calture />} />

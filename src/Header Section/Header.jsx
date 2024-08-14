@@ -70,7 +70,7 @@ function HeadSection() {
                         <div className={style.Nav_side_menue}>
                             <ul>
                                 <li><Link to="/">Home</Link></li>
-                                <li><Link to="/news">Politics</Link></li>
+                                <li><Link to="/politics">Politics</Link></li>
                                 <li><Link to="/sports">Sports</Link></li>
                                 <li><Link to="/calture">Culture</Link></li>
                                 <li><Link to="/climate">Climate</Link></li>
@@ -92,7 +92,7 @@ function HeadSection() {
                     <div className={style.nav_menue}>
                         <ul>
                             <li><Link to="/">Home</Link></li>
-                            <li><Link to="/news">Politics</Link></li>
+                            <li><Link to="/politics">Politics</Link></li>
                             <li><Link to="/sports">Sports</Link></li>
                             <li><Link to="/calture">Culture</Link></li>
                             <li><Link to="/climate">Climate</Link></li>

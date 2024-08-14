@@ -258,23 +258,26 @@ header a {
     top: -1000px;
     right: 0;
     width: 100%;
-    height: 90vh;
-    background-color: rgba(255, 255, 255, 0.75);
+    height: 98vh;
+    background-color: rgba(255, 255, 255, 0.35);
     box-shadow: 0 8px 32px hsla(311, 74%, 15%, 0.2);
     backdrop-filter: blur(24px);
-    padding: 2.5rem 1.5rem 0;
+    padding: 2rem 0.5rem 1rem 0.5rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     /* pointer-events: none; */
     transition: opacity .4s;
+    transition: all 0.4s ease-in-out;
 }
 
 .search_show {
     top: 0;
-    transition: top 0.3s ease-in-out;
 }
-
+#search{
+    width: 20px;
+    cursor: pointer;
+}
 .search__form {
     display: flex;
     align-items: center;
@@ -350,12 +353,18 @@ header a {
 .post img{
     width: 45%;
 }
-
+.post a{
+    font-size: 14px;
+}
 
 @media screen and (min-width: 525px){
 
     .post img{
         width: 35%;
+    }
+    .post a{
+        font-size: 16px;
+        font-weight: 500;
     }
 }
 @media screen and (min-width: 625px){
@@ -427,7 +436,8 @@ header a {
     }
     .post p{
         width: 65%;
-        font-size: 16px;
+        font-size: 15px;
+        font-weight: 400;
     }
 
 }
@@ -526,9 +536,9 @@ header a {
         margin-left: 15px;
     }
 
-    .container .orederbutton {
-        font-size: 16px;
-        padding: 10px 20px;
+    .search_side {
+        height: 98vh;
+        background-color: rgba(255, 255, 255, 0.65);
     }
 
     .post {

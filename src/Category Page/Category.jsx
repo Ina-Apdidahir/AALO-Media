@@ -11,6 +11,47 @@ import Previous from '../assets/My_Blog_Images/WPrevious.png'
 
 function Category() {
 
+    // ___________________ Scroll Animation _____________________\\
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add(styles.visible);
+                    } else {
+                        entry.target.classList.remove(styles.visible);
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        const observeElements = () => {
+            const elements = document.querySelectorAll(`.${styles.Scale}`);
+            // console.log("Elements found:", elements.length);
+            elements.forEach((el) => observer.observe(el));
+
+            const lefslide = document.querySelectorAll(`.${styles.lefslide}`);
+            lefslide.forEach((el) => observer.observe(el));
+
+            const rightslide = document.querySelectorAll(`.${styles.rightslide}`);
+            rightslide.forEach((el) => observer.observe(el));
+        };
+
+        observeElements(); // Initial run
+        const observerMutation = new MutationObserver(observeElements);
+        observerMutation.observe(document.body, { childList: true, subtree: true });
+
+        return () => {
+            observer.disconnect();
+            observerMutation.disconnect();
+        };
+    }, []);
+
+    // ___________________ Scroll Animation _____________________\\
+
+
 
     const [category, setCategory] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -168,7 +209,7 @@ function Category() {
                                 </div>
                                 <div className={styles.post_txts}>
 
-                                    <div className={styles.post_category}>
+                                    <div className={` ${styles.post_category} ${styles.Scale} `}>
 
                                         {post.subcategories ? (
                                             <Link to={`/category/${post.subcategories?.map(category => category.slug.current)}`}>
@@ -184,21 +225,25 @@ function Category() {
 
                                     <div className={styles.Aouthor_date}>
                                         <div className={styles.post_date}>
-                                            <small>{formatDate(post.publishedAt)}</small>
+                                            <small className={styles.lefslide}>
+                                                {formatDate(post.publishedAt)}
+                                            </small>
                                         </div>
                                         <div className={styles.post_Author}>
-                                            <p>{post.author}</p>
+                                            <p className={styles.rightslide}>
+                                                {post.author}
+                                            </p>
                                         </div>
                                     </div>
 
                                     <div className={styles.post_title}>
-                                        <p>
+                                        <p >
                                             {post.title}
                                         </p>
                                     </div>
                                 </div>
                                 <div className={styles.post_btn}>
-                                    <button><Link to={`/detail/${post.slug.current}`}>Read more</Link></button>
+                                    <button className={styles.Scale}><Link to={`/detail/${post.slug.current}`}>Read more</Link></button>
                                 </div>
 
                             </div>

@@ -3,10 +3,11 @@ import React, { useState, useEffect } from 'react';
 import client from '../../sanity_client/sanityClient' // Import your client
 import { Link } from 'react-router-dom';
 
-import styles from './Culture_sec.module.css'
+import styles from './Politic_Section.module.css'
 import whiteArrow from '../assets/My_Blog_Images/whiteArrow.png'
 
-function Calture_Section() {
+
+function Politic_Section() {
 
 
     // ___________________ Scroll Animation _____________________\\
@@ -44,7 +45,7 @@ function Calture_Section() {
     // ___________________ Scroll Animation _____________________\\
 
 
-    const [categoryposts, setCategoryposts] = useState([]);
+    const [politicposts, setPoliticposts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -63,11 +64,11 @@ function Calture_Section() {
             },
             publishedAt,
             categories[]->{
-               title,
+              title,
               slug
             },
             subcategories[]->{
-               title,
+              title,
               slug
             },
             "author": author->name
@@ -75,7 +76,7 @@ function Calture_Section() {
 
         client.fetch(query)
             .then((data) => {
-                setCategoryposts(data);
+                setPoliticposts(data);
                 setIsLoading(false);
             })
             .catch((err) => {
@@ -84,27 +85,22 @@ function Calture_Section() {
             });
     }, [])
 
-    // const categoryTitles = categoryposts.flatMap(item => item.categories.map(category => category.title));
-    // console.log(categoryTitles);
 
-    const filteredPosts = categoryposts.filter(post => post.categories?.some(category => category.title === 'Culture'));
-    // console.log(filteredPosts)
+    const filteredPosts = politicposts.filter(post => post.categories?.some(category => category.title === 'Politics'));
+
 
     const lastPost = filteredPosts[0];
     const otherPosts = filteredPosts.slice(1, 5);
-
-    // console.log(lastPost)
-    // console.log(categoryposts);
-
 
 
     if (error) {
         return <div>Error fetching posts: {error.message}</div>;
     }
 
-    if (!categoryposts.length < 0) {
+    if (!politicposts.length < 0) {
         return <div>No posts found</div>;
     }
+
 
 
 
@@ -115,7 +111,7 @@ function Calture_Section() {
                 <div className={styles.container}>
                     <div className={styles.sub_container}>
                         <div className={styles.section}>
-                            <h1>Culture</h1>
+                            <h1>Politics</h1>
                             <button>
                                 <Link to={`/category/${lastPost?.categories?.map(category => category.slug.current)}`}>
                                     see more <img src={whiteArrow} alt="" />
@@ -162,9 +158,6 @@ function Calture_Section() {
             ) : ''}
         </>
     );
-
 }
 
-export default Calture_Section
-
-
+export default Politic_Section
